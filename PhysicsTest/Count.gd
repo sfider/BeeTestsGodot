@@ -13,4 +13,4 @@ func add_count(amount):
 	update_text()
 	
 func update_text():
-	set_text("Count: %d" % count)
+	set_text("num: %d" % count)

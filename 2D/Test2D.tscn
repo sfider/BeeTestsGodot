@@ -20,7 +20,7 @@
 mesh = SubResource("QuadMesh_k8wq0")
 
 [sub_resource type="LabelSettings" id="LabelSettings_j1w1u"]
-font_size = 60
+font_size = 40
 font_color = Color(0.239216, 0.239216, 0.239216, 1)
 outline_size = 4
 
@@ -57,8 +57,6 @@ script = ExtResource("4_q5te6")
 bee_scene = ExtResource("5_ueamx")
 lable = NodePath("../HUD/Label Count")
 
-[node name="Bee" parent="BeehiveL" instance=ExtResource("5_ueamx")]
-
 [node name="EmptyBeehive" type="Node2D" parent="BeehiveL" node_paths=PackedStringArray("lable")]
 script = ExtResource("4_q5te6")
 bee_scene = ExtResource("6_fjltt")
@@ -89,11 +87,11 @@ canvasItem = NodePath("Info")
 toggle = true
 
 [node name="Label Count" type="Label" parent="HUD"]
-offset_left = 95.0121
-offset_top = 6.98236
-offset_right = 457.012
-offset_bottom = 102.982
-text = "Count: 1"
+offset_left = 95.0
+offset_top = 10.0
+offset_right = 695.0
+offset_bottom = 65.0
+text = "num: 1"
 label_settings = SubResource("LabelSettings_j1w1u")
 
 [node name="Label Title" type="Label" parent="HUD"]
@@ -108,14 +106,38 @@ text = "Godot 2D"
 label_settings = SubResource("LabelSettings_j1w1u")
 horizontal_alignment = 1
 
-[node name="Label FPS" type="Label" parent="HUD"]
-offset_left = 92.974
-offset_top = 78.3159
-offset_right = 454.974
-offset_bottom = 174.316
-text = "100"
+[node name="Label FPS" type="Label" parent="HUD" node_paths=PackedStringArray("cpu", "rt_cpu", "rt_gpu")]
+offset_left = 95.0
+offset_top = 65.0
+offset_right = 695.0
+offset_bottom = 120.0
+text = "fps: 60"
 label_settings = SubResource("LabelSettings_j1w1u")
 script = ExtResource("11_uxiqh")
+cpu = NodePath("CPU")
+rt_cpu = NodePath("RT_CPU")
+rt_gpu = NodePath("RT_GPU")
+
+[node name="CPU" type="Label" parent="HUD/Label FPS"]
+offset_top = 55.0
+offset_right = 600.0
+offset_bottom = 110.0
+text = "cpu: 16.66ms"
+label_settings = SubResource("LabelSettings_j1w1u")
+
+[node name="RT_CPU" type="Label" parent="HUD/Label FPS"]
+offset_top = 113.0
+offset_right = 600.0
+offset_bottom = 168.0
+text = "rt_cpu: 16.66ms"
+label_settings = SubResource("LabelSettings_j1w1u")
+
+[node name="RT_GPU" type="Label" parent="HUD/Label FPS"]
+offset_top = 165.0
+offset_right = 600.0
+offset_bottom = 220.0
+text = "rt_gpu: 16.66ms"
+label_settings = SubResource("LabelSettings_j1w1u")
 
 [node name="Info" type="Control" parent="HUD"]
 layout_mode = 3

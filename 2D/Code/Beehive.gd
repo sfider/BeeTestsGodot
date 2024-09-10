@@ -18,7 +18,7 @@ func _process(delta):
 		for n in min(maxCount-total_count,200):
 			add_child(bee_scene.instantiate())
 			total_count+=1
-		lable.set_text("Count: %d" % total_count)
+		lable.set_text("num: %d" % total_count)
 	
 func _input(event):
 	if event.is_action_pressed(key):
@@ -32,4 +32,4 @@ func _input(event):
 		maxCount+=100000
 	if event.is_action_pressed("mmf")||event.is_action_pressed("mmq"):
 		total_count+=1000
-		lable.set_text("Count: %d" % total_count)
+		lable.set_text("num: %d" % total_count)
